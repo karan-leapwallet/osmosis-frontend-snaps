@@ -71,6 +71,19 @@ export const WalletRegistry: RegistryWallet[] = [
     features: [],
   },
   {
+    ...CosmosKitWalletList["leap-metamask-cosmos-snap"],
+    logo: "/wallets/leap.svg",
+    mobileDisabled: false,
+    lazyInstall: () =>
+      import("@cosmos-kit/leap-metamask-cosmos-snap").then(
+        (m) => m.MetamaskCosmosSnapWallet
+      ),
+    windowPropertyName: "ethereum",
+    stakeUrl: "https://cosmos.leapwallet.io/staking",
+    governanceUrl: "https://cosmos.leapwallet.io/gov",
+    features: [],
+  },
+  {
     ...CosmosKitWalletList["cosmostation-extension"],
     logo: "/wallets/cosmostation.png",
     lazyInstall: () =>
