@@ -72,7 +72,7 @@ export const WalletRegistry: RegistryWallet[] = [
   },
   {
     ...CosmosKitWalletList["leap-metamask-cosmos-snap"],
-    logo: "/wallets/leap.svg",
+    logo: "/wallets/snap.svg",
     mobileDisabled: false,
     lazyInstall: () =>
       import("@cosmos-kit/leap-metamask-cosmos-snap").then(

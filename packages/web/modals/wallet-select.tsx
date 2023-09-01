@@ -417,8 +417,9 @@ const LeftModalContent: FunctionComponent<
                         width={40}
                         height={40}
                         alt={`${wallet.prettyName} logo`}
+                        style={{ minHeight: "40px", minWidth: "40px" }}
                       />
-                      <span>{wallet.prettyName}</span>
+                      <span className="text-left">{wallet.prettyName}</span>
                     </button>
                   ))}
                 </div>
