@@ -465,6 +465,13 @@ export class AccountStore<Injects extends Record<string, any>[] = []> {
         usedFee = fee;
       }
 
+      if (usedFee.amount.length === 0) {
+        usedFee = {
+          ...usedFee,
+          amount: [{ amount: "3000", denom: "uosmo" }],
+        };
+      }
+
       const txRaw = await this.sign(
         wallet,
         wallet.offlineSigner,
