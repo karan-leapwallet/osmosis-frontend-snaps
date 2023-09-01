@@ -419,7 +419,15 @@ const LeftModalContent: FunctionComponent<
                         alt={`${wallet.prettyName} logo`}
                         style={{ minHeight: "40px", minWidth: "40px" }}
                       />
-                      <span className="text-left">{wallet.prettyName}</span>
+                      <span
+                        className={classNames(
+                          "text-left",
+                          wallet.name === "leap-metamask-cosmos-snap" ??
+                            "ml-[8px]"
+                        )}
+                      >
+                        {wallet.prettyName}
+                      </span>
                     </button>
                   ))}
                 </div>
