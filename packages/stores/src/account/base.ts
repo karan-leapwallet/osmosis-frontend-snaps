@@ -39,6 +39,7 @@ import {
   QueriesStore,
 } from "@keplr-wallet/stores";
 import { KeplrSignOptions } from "@keplr-wallet/types";
+import { getOfflineSigner } from "@leapwallet/cosmos-snap-provider";
 import {
   cosmosProtoRegistry,
   cosmwasmProtoRegistry,
@@ -466,12 +467,12 @@ export class AccountStore<Injects extends Record<string, any>[] = []> {
         usedFee = fee;
       }
 
-      if (usedFee.amount.length === 0) {
-        usedFee = {
-          ...usedFee,
-          amount: [{ amount: "3000", denom: "uosmo" }],
-        };
-      }
+      // if (usedFee.amount.length === 0) {
+      //   usedFee = {
+      //     ...usedFee,
+      //     amount: [{ amount: "3000", denom: "uosmo" }],
+      //   };
+      // }
 
       const txRaw = await this.sign(
         wallet,
@@ -696,8 +697,10 @@ export class AccountStore<Injects extends Record<string, any>[] = []> {
       sequence
     );
 
+    const offlineSigner = getOfflineSigner(chainId);
+
     const { signature, signed } = await (
-      signer as unknown as OfflineAminoSigner
+      offlineSigner as unknown as OfflineAminoSigner
     ).signAmino(signerAddress, signDoc);
 
     const signedTxBody = {
