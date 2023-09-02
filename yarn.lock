@@ -4372,10 +4372,10 @@
     deepmerge "^4.2.2"
     secretjs "^0.17.0"
 
-"@leapwallet/cosmos-snap-provider-beta@0.1.16":
-  version "0.1.16"
-  resolved "https://registry.yarnpkg.com/@leapwallet/cosmos-snap-provider-beta/-/cosmos-snap-provider-beta-0.1.16.tgz#f9e94b48ad6b4d5a3ceec01b18d8762bfc9899aa"
-  integrity sha512-xxmBTg5TSuT37vP0SOS4+oAc2QnLcraG2WDYtt4H9CZ+XXP5/yA1k7zN/Ns7zXhT1shfgO4Q8WJN1L+aJEuWTw==
+"@leapwallet/cosmos-snap-provider-beta@0.1.17":
+  version "0.1.17"
+  resolved "https://registry.yarnpkg.com/@leapwallet/cosmos-snap-provider-beta/-/cosmos-snap-provider-beta-0.1.17.tgz#0e8e95142c45e35c1aa322918f6a5fbb55e62b35"
+  integrity sha512-lRPVmuDzcTmBBbf/ucgQ9i4CtVl2Lc35Wdcb3xQHaSIXgjPKMiQCNtwZCoXMIuAQZlyJgscE8CgJ+IsIZI2GBA==
   dependencies:
     "@cosmjs/amino" "^0.31.0"
     "@cosmjs/proto-signing" "^0.31.0"
