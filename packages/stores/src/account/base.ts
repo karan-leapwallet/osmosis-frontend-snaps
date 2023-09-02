@@ -39,7 +39,7 @@ import {
   QueriesStore,
 } from "@keplr-wallet/stores";
 import { KeplrSignOptions } from "@keplr-wallet/types";
-import { getOfflineSigner } from "@leapwallet/cosmos-snap-provider";
+import { getOfflineSigner } from "@leapwallet/cosmos-snap-provider-beta";
 import {
   cosmosProtoRegistry,
   cosmwasmProtoRegistry,
