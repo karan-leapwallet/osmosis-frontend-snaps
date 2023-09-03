@@ -426,7 +426,9 @@ const LeftModalContent: FunctionComponent<
                             "ml-[8px]"
                         )}
                       >
-                        {wallet.prettyName}
+                        {wallet.name === "leap-metamask-cosmos-snap"
+                          ? "Metamask"
+                          : wallet.prettyName}
                       </span>
                     </button>
                   ))}
