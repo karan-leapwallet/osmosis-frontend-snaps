@@ -1,4 +1,5 @@
 import { Popover } from "@headlessui/react";
+import { AccountModal } from "@leapwallet/snaps-sdk-react";
 import classNames from "classnames";
 import { observer } from "mobx-react-lite";
 import Image from "next/image";
@@ -44,6 +45,39 @@ import { noop } from "~/utils/function";
 import { formatICNSName, getShortAddress } from "~/utils/string";
 import { removeQueryParam } from "~/utils/url";
 
+const SDKTheme = {
+  colors: {
+    primary: "#8C8AF9",
+    border: "transparent",
+    stepBorder: "#383838",
+    text: "#FFFFFF",
+    textSecondary: "#CEC8F3",
+    backgroundPrimary: "#282750",
+    backgroundSecondary: "#140F34",
+    error: "#f87171",
+    errorBackground: "#140F34",
+    success: "#29A874",
+    successBackground: "#140F34",
+    gray: "#9CA3AF",
+    alpha: "#FFFFFF",
+  },
+  borderRadii: {
+    modalBody: "1.5rem",
+    logo: "999rem",
+    primary: "1rem",
+    secondary: "0.5rem",
+    actionButton: "999rem",
+    tabBody: "1rem",
+    selector: "999rem",
+    connectWalletButton: "999rem",
+    tabButton: "0.5rem",
+  },
+  blurs: {
+    modalOverlay: "2px",
+  },
+  fontFamily: "Poppins",
+};
+
 export const NavBar: FunctionComponent<
   {
     title: string;
@@ -62,6 +96,13 @@ export const NavBar: FunctionComponent<
     userUpgrades,
   } = useStore();
   const t = useTranslation();
+
+  const [isAccountModalOpen, setIsAccountModalOpen] = useState(false);
+  const closeAccountModal = useCallback(() => {
+    setIsAccountModalOpen(false);
+  }, []);
+
+  const wallet = accountStore.getWallet(chainId);
 
   const featureFlags = useFeatureFlags();
 
@@ -247,6 +288,14 @@ export const NavBar: FunctionComponent<
             {navBarStore.title || title}
           </h4>
           <div className="flex items-center gap-3 lg:gap-1">
+            <Button
+              className="h-fit w-[180px] lg:w-fit lg:px-2"
+              mode={"secondary"}
+              size="sm"
+              onClick={() => {}}
+            >
+              <span className="subtitle1 mx-auto">Open Leap SDK</span>
+            </Button>
             {navBarStore.callToActionButtons.map((button, index) => (
               <Button
                 className="h-fit w-[180px] lg:w-fit lg:px-2"
@@ -372,6 +421,16 @@ export const NavBar: FunctionComponent<
         isOpen={isProfileOpen}
         onRequestClose={onCloseProfile}
         icnsName={icnsQuery?.primaryName}
+      />
+      <AccountModal
+        theme={SDKTheme}
+        chainId={wallet?.chainId}
+        address={wallet?.address}
+        isOpen={isAccountModalOpen}
+        onClose={closeAccountModal}
+        config={{
+          closeOnBackdropClick: false,
+        }}
       />
     </>
   );
