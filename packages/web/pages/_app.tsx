@@ -1,5 +1,6 @@
 import "../styles/globals.css"; // eslint-disable-line no-restricted-imports
 import "react-toastify/dist/ReactToastify.css"; // some styles overridden in globals.css
+import "@leapwallet/snaps-sdk-react/styles.css"; // some styles overridden in globals.css
 
 import dayjs from "dayjs";
 import duration from "dayjs/plugin/duration";
@@ -55,6 +56,10 @@ setDefaultLanguage(DEFAULT_LANGUAGE);
 
 function MyApp({ Component, pageProps }: AppProps) {
   useAmplitudeAnalytics({ init: true });
+
+  // useEffect(() => {
+  //   Container.set(new Token('persistence'), localStorage);
+  // }, [])
 
   return (
     <StoreProvider>
