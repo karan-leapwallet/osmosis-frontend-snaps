@@ -35,7 +35,19 @@ const withBundleAnalyzer = require("@next/bundle-analyzer")({
   enabled: process.env.ANALYZE === "true",
 });
 
-module.exports = withBundleAnalyzer(config);
+const withTM = require("next-transpile-modules")([
+  "@usecapsule/web-sdk",
+  "@usecapsule/user-management-client",
+]);
+
+// /** @type {import('next').NextConfig} */
+// const nextConfig = {
+//   transpilePackages: [['@usecapsule/web-sdk', '@usecapsule/user-management-client']],
+// }
+
+// module.exports = nextConfig
+
+module.exports = withBundleAnalyzer(withTM(config));
 
 // Injected content via Sentry wizard below
 

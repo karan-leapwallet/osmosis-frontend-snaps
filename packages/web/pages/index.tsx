@@ -14,6 +14,15 @@ import { useWalletSelect } from "~/hooks/wallet-select";
 import { useStore } from "~/stores";
 import { UnverifiedAssetsState } from "~/stores/user-settings";
 
+if (typeof global.self === "undefined") {
+  (global as any).self = global;
+}
+
+if (typeof global.addEventListener === "undefined") {
+  global.addEventListener = () => {};
+  global.removeEventListener = () => {};
+}
+
 interface HomeProps {
   ads: Ad[];
 }

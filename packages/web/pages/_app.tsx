@@ -1,6 +1,5 @@
 import "../styles/globals.css"; // eslint-disable-line no-restricted-imports
 import "react-toastify/dist/ReactToastify.css"; // some styles overridden in globals.css
-import "@leapwallet/snaps-sdk-react/styles.css"; // some styles overridden in globals.css
 
 import dayjs from "dayjs";
 import duration from "dayjs/plugin/duration";
@@ -22,6 +21,7 @@ import {
 } from "react-multi-lang";
 import { Bounce, ToastContainer } from "react-toastify";
 
+import { CapsuleAuthProvider } from "~/capsule/components/capsuleContext";
 import { Icon } from "~/components/assets";
 import ErrorBoundary from "~/components/error/error-boundary";
 import ErrorFallback from "~/components/error/error-fallback";
@@ -41,6 +41,15 @@ import dayjsLocaleKo from "../localizations/dayjs-locale-ko.js";
 import en from "../localizations/en.json";
 import { StoreProvider, useStore } from "../stores";
 import { IbcNotifier } from "../stores/ibc-notifier";
+
+if (typeof global.self === "undefined") {
+  (global as any).self = global;
+}
+
+if (typeof global.addEventListener === "undefined") {
+  global.addEventListener = () => {};
+  global.removeEventListener = () => {};
+}
 
 dayjs.extend(relativeTime);
 dayjs.extend(duration);
@@ -64,19 +73,21 @@ function MyApp({ Component, pageProps }: AppProps) {
   return (
     <StoreProvider>
       <WalletSelectProvider>
-        <DefaultSeo />
-        <IbcNotifier />
-        <ToastContainer
-          toastStyle={{
-            backgroundColor: "#2d2755",
-          }}
-          transition={Bounce}
-        />
-        <MainLayoutWrapper>
-          <ErrorBoundary fallback={ErrorFallback}>
-            {Component && <Component {...pageProps} />}
-          </ErrorBoundary>
-        </MainLayoutWrapper>
+        <CapsuleAuthProvider>
+          <DefaultSeo />
+          <IbcNotifier />
+          <ToastContainer
+            toastStyle={{
+              backgroundColor: "#2d2755",
+            }}
+            transition={Bounce}
+          />
+          <MainLayoutWrapper>
+            <ErrorBoundary fallback={ErrorFallback}>
+              {Component && <Component {...pageProps} />}
+            </ErrorBoundary>
+          </MainLayoutWrapper>
+        </CapsuleAuthProvider>
       </WalletSelectProvider>
     </StoreProvider>
   );

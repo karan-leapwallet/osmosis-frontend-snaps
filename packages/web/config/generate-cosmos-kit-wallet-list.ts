@@ -11,6 +11,7 @@ import * as fs from "fs";
 import path from "path";
 import * as prettier from "prettier";
 
+import { LeapCapsuleInfo } from "~/capsule/registry";
 import { isFunction } from "~/utils/assertion";
 
 const CosmosKitWalletList = [
@@ -20,6 +21,7 @@ const CosmosKitWalletList = [
   cosmostationExtensionInfo,
   metamaskCosmosSnapInfo,
   okxWalletExtensionInfo,
+  LeapCapsuleInfo,
   xdefiExtensionInfo,
 ];
 
