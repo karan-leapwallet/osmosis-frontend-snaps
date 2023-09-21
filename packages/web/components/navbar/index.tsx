@@ -2,7 +2,6 @@ import { Popover } from "@headlessui/react";
 // import { AccountModal } from '@leapwallet/snaps-sdk-react'
 import classNames from "classnames";
 import { observer } from "mobx-react-lite";
-import dynamic from "next/dynamic";
 import Image from "next/image";
 import { useRouter } from "next/router";
 import {
@@ -46,39 +45,39 @@ import { noop } from "~/utils/function";
 import { formatICNSName, getShortAddress } from "~/utils/string";
 import { removeQueryParam } from "~/utils/url";
 
-const AccountModal = dynamic(
-  () => import("@leapwallet/snaps-sdk-react").then((mod) => mod.AccountModal),
-  { ssr: false }
-);
+// const AccountModal = dynamic(
+//   () => import("@leapwallet/snaps-sdk-react").then((mod) => mod.AccountModal),
+//   { ssr: false }
+// );
 
-const osmosisTheme = {
-  colors: {
-    primary: "#8C8AF9",
-    border: "#4b475c",
-    stepBorder: "#383838",
-    text: "#FFFFFF",
-    textSecondary: "#CEC8F3",
-    backgroundPrimary: "#282750",
-    backgroundSecondary: "#140F34",
-    error: "#f87171",
-    errorBackground: "#140F34",
-    success: "#29A874",
-    successBackground: "#140F34",
-    gray: "#9CA3AF",
-    alpha: "#FFFFFF",
-  },
-  borderRadii: {
-    modalBody: "1.5rem",
-    logo: "999rem",
-    primary: "1rem",
-    secondary: "0.5rem",
-    actionButton: "999rem",
-  },
-  blurs: {
-    modalOverlay: "2px",
-  },
-  fontFamily: "inherit",
-};
+// const osmosisTheme = {
+//   colors: {
+//     primary: "#8C8AF9",
+//     border: "#4b475c",
+//     stepBorder: "#383838",
+//     text: "#FFFFFF",
+//     textSecondary: "#CEC8F3",
+//     backgroundPrimary: "#282750",
+//     backgroundSecondary: "#140F34",
+//     error: "#f87171",
+//     errorBackground: "#140F34",
+//     success: "#29A874",
+//     successBackground: "#140F34",
+//     gray: "#9CA3AF",
+//     alpha: "#FFFFFF",
+//   },
+//   borderRadii: {
+//     modalBody: "1.5rem",
+//     logo: "999rem",
+//     primary: "1rem",
+//     secondary: "0.5rem",
+//     actionButton: "999rem",
+//   },
+//   blurs: {
+//     modalOverlay: "2px",
+//   },
+//   fontFamily: "inherit",
+// };
 
 export const NavBar: FunctionComponent<
   {
@@ -409,13 +408,13 @@ export const NavBar: FunctionComponent<
         <>
           {account?.address ? (
             <ClientOnly>
-              <AccountModal
+              {/* <AccountModal
                 chainId={chainId}
                 isOpen={isProfileOpen}
                 onClose={onCloseProfile}
                 theme={osmosisTheme}
                 address={account?.address}
-              />
+              /> */}
             </ClientOnly>
           ) : null}
         </>

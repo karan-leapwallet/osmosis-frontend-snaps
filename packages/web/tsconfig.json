@@ -5,7 +5,8 @@
     "require": ["tsconfig-paths/register"],
     "compilerOptions": {
       "module": "commonjs",
-      "esModuleInterop": true,
+      "esModuleInterop": false,
+      "isolatedModules": false,
       "target": "ESNext",
       "moduleResolution": "node"
     }
@@ -17,7 +18,7 @@
     "allowJs": true,
     "skipLibCheck": true,
     "strict": true,
-    "forceConsistentCasingInFileNames": true,
+    "forceConsistentCasingInFileNames": false,
     "noEmit": true,
     "esModuleInterop": true,
     "module": "esnext",

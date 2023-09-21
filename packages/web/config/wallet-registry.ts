@@ -84,6 +84,28 @@ export const WalletRegistry: RegistryWallet[] = [
     features: [],
   },
   {
+    name: "leap-cosmos-capsule",
+    prettyName: "Connect with Google",
+    mode: "extension",
+    rejectMessage: { source: "Request rejected" },
+    downloads: [
+      {
+        device: "desktop",
+        browser: "chrome",
+        link: "https://chrome.google.com/webstore/detail/metamask-flask-developmen/ljfoeinjpaedjfecbmggjgodbgkmjkjk",
+      },
+    ],
+    connectEventNamesOnWindow: ["leap_keystorechange"],
+    logo: "https://upload.wikimedia.org/wikipedia/commons/5/53/Google_%22G%22_Logo.svg",
+    mobileDisabled: false,
+    lazyInstall: () =>
+      import("~/capsule/main-wallet").then((m) => m.CosmosCapsuleWallet),
+    windowPropertyName: "capsule",
+    stakeUrl: "https://cosmos.leapwallet.io/staking",
+    governanceUrl: "https://cosmos.leapwallet.io/gov",
+    features: [],
+  },
+  {
     ...CosmosKitWalletList["cosmostation-extension"],
     logo: "/wallets/cosmostation.png",
     lazyInstall: () =>

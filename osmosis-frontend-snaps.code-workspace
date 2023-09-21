@@ -1,0 +1,18 @@
+{
+	"folders": [
+		{
+			"path": "."
+		}
+	],
+	"settings": {
+		"jest.disabledWorkspaceFolders": [
+			"osmosis-frontend-snaps",
+			"osmosis-frontend-snaps",
+			"math",
+			"stores",
+			"web",
+			"pools",
+			"proto-codecs"
+		]
+	}
+}
